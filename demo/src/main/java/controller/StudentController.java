@@ -1,9 +1,11 @@
-package com.example.controller;
+package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import entity.Student;
+import Entity.Student;
+import jakarta.persistence.Id;
+import repository.StudentRepository;
 import service.StudentService;
 
 import java.util.List;
@@ -14,6 +16,9 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+    
+    @Autowired
+    private StudentRepository studentrepository;
 
     @GetMapping
     public List<Student> getAllStudents() {
@@ -21,17 +26,18 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable Long id) {
+    public Student getStudentById(@PathVariable Id id) {
         return studentService.getStudentById(id).orElse(null);
     }
 
     @PostMapping
-    public Student saveStudent(@RequestBody Student student) {
-        return studentService.saveStudent(student);
-    }
+    public String saveStudent(@RequestBody Student student) {
+         studentService.saveStudent(student);
+        return "Student detail saved successfully";   
+        }
 
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable Long id) {
+    public void deleteStudent(@PathVariable Id id) {
         studentService.deleteStudent(id);
     }
 }

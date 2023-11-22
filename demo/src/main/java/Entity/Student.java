@@ -1,19 +1,17 @@
-package entity;
+package Entity;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class Student {
     
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
     private int id;
-    
-	
 	private String name;
     private int age;
     private double salary;
@@ -24,12 +22,12 @@ public class Student {
 		this.age = age;
 		this.salary = salary;
 	}
-	public void performSomeAction() {
+	//public void performSomeAction() {
         // Example method where logging is added
-        Logger.debug("Performing some action for student: {}", name);
+   //     Logger.debug("Performing some action for student: {}", name);
         // Business logic...
-        logger.info("Action completed for student: {}", name);
-    }
+   //     logger.info("Action completed for student: {}", name);
+  //  }
 
 	public int getId() {
 		return id;
